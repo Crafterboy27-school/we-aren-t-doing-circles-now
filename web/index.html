@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We aren't doing circles now</title>
+</head>
+<body>
+    <h1>We aren't doing circles now</h1>
+    <div id="grid">
+        <shape class="triangle"></shape>
+        <shape class="circle"></shape>
+    </div>
+    <style>
+        shape{
+            all:unset;
+            display:inline-block;
+            width: 50px;
+            height: 50px;
+            border: solid black 5px;
+            margin:1px;
+            cursor: pointer;
+        }
+
+        .triangle{
+            background-color: red;
+        }
+        .circle{
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 100px;
+        }
+    </style>
+    <script>
+        let grid = document.getElementById("grid");
+        grid.innerHTML = "";
+
+        let gridArray = []
+        for(let i1 = 0;i1<10;i1++){
+            for(let i2 = 0;i2<10;i2++){
+                let shape = document.createElement("shape")
+                let mi1 = i1;
+                mi2 = 
+                shape.className = ("triangle")
+                gridArray.push(shape)
+                grid.appendChild(shape)
+
+                shape.addEventListener("click", ()=>{
+                    switch(shape.className){
+                        case("triangle"):
+                            shape.className = "circle"
+                            break;
+                        case("circle"):
+                            shape.className = "triangle"
+                            break;
+                    }
+                        
+                    
+                })
+            }
+            let br = document.createElement("br")
+            grid.appendChild(br)
+        }
+
+        let placedCircles = 0;
+        function placeCircle(){
+            placeCircles++
+            gridArray[Math.round(Math.random()*gridArray.length)].className = "circle"
+            
+            setTimeout(placeCircle)
+        }
+        placeCircle()
+    </script>
+</body>
+</html>
